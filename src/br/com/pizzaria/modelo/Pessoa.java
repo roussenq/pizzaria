@@ -22,13 +22,13 @@ public class Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false, length = 14)
     private String telefone;  
+    
     
     @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
@@ -44,8 +44,6 @@ public class Pessoa implements Serializable {
         this.email = email;
         this.telefone = telefone;
     }
-    
-    
     
     public Long getId() {
         return id;
@@ -79,15 +77,6 @@ public class Pessoa implements Serializable {
         this.telefone = telefone;
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
-    }
-
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
-    }
-
-    
     @Override
     public int hashCode() {
         int hash = 0;

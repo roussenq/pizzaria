@@ -5,6 +5,7 @@
  */
 package br.com.pizzaria.dao;
 
+import br.com.pizzaria.modelo.Endereco;
 import br.com.pizzaria.modelo.Pessoa;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -26,7 +27,7 @@ public class HibernateUtil {
         try {
             Configuration cfg = new Configuration(); //tem que colocar na sequencia pai/filho
             cfg.addAnnotatedClass(Pessoa.class);
-           // cfg.addAnnotatedClass(Endereco.class);
+            cfg.addAnnotatedClass(Endereco.class);
            // cfg.addAnnotatedClass(Cliente.class);
            // cfg.addAnnotatedClass(Fornecedor.class);
         

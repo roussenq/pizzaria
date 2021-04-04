@@ -7,7 +7,6 @@ package br.com.pizzaria.modelo;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import org.hibernate.annotations.ManyToAny;
 
 /**
  *
@@ -36,9 +35,9 @@ public class Endereco implements Serializable {
     @Column(nullable = false)
     private String observacao;
     
-    //@ManyToOne
-    //@JoinColumn(name = "id_pessoa")
-   // private Pessoa pessoa;
+    @ManyToOne
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa pessoa;
 
     public Endereco() {
     }
@@ -117,6 +116,14 @@ public class Endereco implements Serializable {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
     
     
