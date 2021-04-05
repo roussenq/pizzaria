@@ -21,17 +21,19 @@ public class ClienteDaoImpl extends BaseDaoImpl<Cliente, Long> implements Client
         consulta.setParameter("nome", "%" + nome + "%");
         return consulta.list();
     }
+    
+     @Override
+    public Cliente pesquisarClienteComEndereco(Long id, Session sessao) throws HibernateException {
+        Query consulta = sessao.createQuery("from Cliente c join fetch c.enderecos where c.id = :id");
+        consulta.setParameter("id", id);
+        return (Cliente) consulta.uniqueResult();
+    }
 
     @Override
     public Cliente pesquisarPorId(Long id, Session sessao) throws HibernateException {
         return (Cliente)sessao.get(Cliente.class, id);
     }
 
-    @Override
-    public Cliente pesquisarClienteComEndereco(Long id, Session sessao) throws HibernateException {
-        Query consulta = sessao.createQuery("from Cliente c join fetch c.enderecos where c.id like :id");
-        consulta.setParameter("id", "%" + id + "%");
-        return (Cliente)consulta.uniqueResult();
-    }
+   
     
 }
