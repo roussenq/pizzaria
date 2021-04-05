@@ -32,8 +32,7 @@ public class Pessoa implements Serializable {
     
     @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
-    //private Fornecedor fornecedor;
-    //private Cliente cliente;
+   
 
     public Pessoa() {
     }
@@ -76,6 +75,16 @@ public class Pessoa implements Serializable {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+    
+    
 
     @Override
     public int hashCode() {

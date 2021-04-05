@@ -5,7 +5,9 @@
  */
 package br.com.pizzaria.dao;
 
+import br.com.pizzaria.modelo.Cliente;
 import br.com.pizzaria.modelo.Endereco;
+import br.com.pizzaria.modelo.Fornecedor;
 import br.com.pizzaria.modelo.Pessoa;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -28,11 +30,11 @@ public class HibernateUtil {
             Configuration cfg = new Configuration(); //tem que colocar na sequencia pai/filho
             cfg.addAnnotatedClass(Pessoa.class);
             cfg.addAnnotatedClass(Endereco.class);
-           // cfg.addAnnotatedClass(Cliente.class);
-           // cfg.addAnnotatedClass(Fornecedor.class);
+            cfg.addAnnotatedClass(Cliente.class);
+            cfg.addAnnotatedClass(Fornecedor.class);
         
 
-            cfg.configure("/br/com/pizzaria/modelo/dao/hibernate.cfg.xml");
+            cfg.configure("/br/com/pizzaria/dao/hibernate.cfg.xml");
             StandardServiceRegistryBuilder build = new StandardServiceRegistryBuilder().
                                            applySettings(cfg.getProperties());
             sessionFactory = cfg.buildSessionFactory(build.build());
