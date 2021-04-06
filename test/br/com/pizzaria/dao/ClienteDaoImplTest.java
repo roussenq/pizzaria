@@ -109,9 +109,12 @@ public class ClienteDaoImplTest {
         System.out.println("Alterar Cliente");
         buscarClienteBd();
         
-        cliente.setNome("TESTE DE CLIENTE");
-        Endereco end = cliente.getEnderecos().get(1);
-        end.setCidade("Palhoça");
+        cliente.setNome("David Roussenq Maria");
+        Endereco end1 = cliente.getEnderecos().get(0);
+        Endereco end2 = cliente.getEnderecos().get(1);
+        
+        end1.setCidade("Florianopolis");
+        end2.setCidade("Palhoca");
 
         sessao = HibernateUtil.abrirConexao();
         clienteDao.salvarOuAlterar(cliente, sessao);
@@ -122,6 +125,7 @@ public class ClienteDaoImplTest {
         sessao.close();
 
         assertEquals(cliente.getNome(), clienteAlt.getNome());
+        assertEquals(cliente.getEnderecos().get(0).getCidade(), clienteAlt.getEnderecos().get(0).getCidade());
         assertEquals(cliente.getEnderecos().get(1).getCidade(), clienteAlt.getEnderecos().get(1).getCidade());
     }
 
@@ -143,7 +147,7 @@ public class ClienteDaoImplTest {
 
     }
 
-    @Test
+    //@Test
     public void testPesquisarPorTelefone() {
         System.out.println("pesquisarPorTelefone");
         buscarClienteBd();
