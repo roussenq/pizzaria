@@ -5,7 +5,9 @@
  */
 package br.com.pizzaria.modelo;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -19,6 +21,9 @@ import javax.persistence.Table;
 public class Cliente extends Pessoa{
    
     private boolean cupom;
+    
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
 
     public Cliente() {
     }
@@ -35,4 +40,13 @@ public class Cliente extends Pessoa{
     public void setCupom(boolean cupom) {
         this.cupom = cupom;
     }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+    
 }

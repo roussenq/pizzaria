@@ -34,6 +34,13 @@ public class ClienteDaoImpl extends BaseDaoImpl<Cliente, Long> implements Client
         return (Cliente)sessao.get(Cliente.class, id);
     }
 
+    @Override
+    public Cliente pesquisarPorTelefone(String telefone, Session sessao) throws HibernateException {
+        Query consulta = sessao.createQuery("from Cliente c join fetch c.enderecos where telefone = :tel");
+        consulta.setParameter("tel", telefone);
+        return (Cliente) consulta.uniqueResult();
+    }
+
    
     
 }

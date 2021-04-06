@@ -19,4 +19,6 @@ public interface ClienteDao extends BaseDao<Cliente, Long>{
     Cliente pesquisarClienteComEndereco(Long id, Session sessao) throws  HibernateException;
     
     List<Cliente> pesquisarPorNome(String nome, Session sessao) throws HibernateException;
+    
+    Cliente pesquisarPorTelefone(String telefone, Session sessao) throws HibernateException;
 }

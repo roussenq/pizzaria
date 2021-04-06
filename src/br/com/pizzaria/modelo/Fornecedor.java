@@ -20,13 +20,15 @@ import javax.persistence.Table;
 public class Fornecedor extends Pessoa{
     
     private String cnpj;
+    private String inscricao_estadual;
 
     public Fornecedor() {
     }
 
-    public Fornecedor(Long id, String nome, String email, String telefone,String cnpj) {
+    public Fornecedor(Long id, String nome, String email, String telefone, String cnpj, String inscricao_estadual) {
         super(id, nome, email, telefone);
         this.cnpj = cnpj;
+        this.inscricao_estadual = inscricao_estadual;
     }
 
     public String getCnpj() {
@@ -35,6 +37,14 @@ public class Fornecedor extends Pessoa{
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    public String getInscricao_estadual() {
+        return inscricao_estadual;
+    }
+
+    public void setInscricao_estadual(String inscricao_estadual) {
+        this.inscricao_estadual = inscricao_estadual;
     }
     
 }
